@@ -1,2 +1,2 @@
-# yydsCrawler
-web crawler chrome extension
+# yydScraper
+web scraper chrome extension
