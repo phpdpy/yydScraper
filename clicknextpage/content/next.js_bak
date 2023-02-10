@@ -1,0 +1,60 @@
+
+// CSS 选择器的详细说明   https://www.w3.org/TR/selectors-3/#sibling-combinators
+
+
+// const replyJKM = () => {
+
+
+// 	// let pc_qs = queryByTxt (" span + svg > path "); 	
+// 	let pc_qs = queryByTxt (" input[placeholder='探索稀土掘金'] "); 				
+
+// 	sleep(0.3);
+// 	inputValue(pc_qs,"nihaoa");
+// };
+
+
+const fireClick = (node) => {
+    const event = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true
+    });
+    node.dispatchEvent(event);
+};
+
+
+const inputValue = (dom, st) => {
+    var evt = new InputEvent('input', {
+        inputType: 'insertText',
+        data: st,
+        dataTransfer: null,
+        isComposing: false
+    });
+    dom.value = st;
+    dom.dispatchEvent(evt);
+};
+
+const queryByTxt = (css_path, txt = '') => {
+    let qall = document.querySelectorAll(css_path);
+    if (txt == '') {
+        return qall[0];
+    }
+    let rtn = 0;
+    qall.forEach(element => {
+        if (element.innerHTML.includes(txt)) {
+            rtn = element;   //实际的效果是在找最后一个符合条件的。
+        }
+    });
+    return rtn;
+};
+var clickNext = function (next, noNext) {
+    nextButton = document.querySelector(".next a");
+    console.log(nextButton)
+    if (nextButton) {
+        nextButton.addEventListener("click", nextButton);
+        fireClick(nextButton);
+        console.log("click done");
+    }
+}
+//clickNext("next", "noNext");
+console.log("click next");

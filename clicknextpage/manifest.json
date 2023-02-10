@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "clicknext",
+    "description": "Base Level Extension",
+    "version": "1.0",
+    "action": {
+      "default_popup": "hello.html",
+      "default_icon": "hello_extensions.png"
+    },
+    "permissions": ["activeTab","scripting","tabs","webNavigation"],
+    "host_permissions": [
+      "http://*/*",
+      "https://*/*"
+    ],
+    "content_scripts": [
+      {
+        "js": ["content.js"],
+        "run_at": "document_end",
+        "matches": [
+          "https://*/*",
+          "http://*/*"
+        ]
+      }
+    ],
+    "web_accessible_resources": [ {
+      "matches": [ "http://*/*", "https://*/*" ],
+      "resources": [ "content/next.js" ]
+   }]
+}
